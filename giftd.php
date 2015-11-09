@@ -1,13 +1,13 @@
 <?php
 /*
 Plugin Name: Giftd
-Description:
-Version: 1.0
+Description: Giftd - Russia's first B2B-service that combines electronic products for sale gift cards and motivational marketing tools based on them.
+Version: 1.0.0
 Author: Joomline
 Author URI: http://joomline.ru
 */
 
-/*  Copyright 2013  Joomline  (email: sale@joomline.ru)
+/*  Copyright 2015  Joomline  (email: sale@joomline.ru)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,8 +24,11 @@ Author URI: http://joomline.ru
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-require_once 'includes/giftd.class.php';
-require_once 'lib/GiftdApiClient.php';
+define( 'GIFTD_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'GIFTD_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+require_once (GIFTD_PLUGIN_DIR . 'includes/giftd.class.php');
+require_once (GIFTD_PLUGIN_DIR . 'lib/GiftdApiClient.php');
 
 //Инициализация
 add_action( 'init', array( 'Giftd', 'init' ) );
+load_plugin_textdomain( 'giftd', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );

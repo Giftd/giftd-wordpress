@@ -65,7 +65,7 @@ class Giftd
 
         if (!$this_plugin)
         {
-            $this_plugin = plugin_basename(ABSPATH.'/wp-content/plugins/giftd/giftd.php');
+            $this_plugin = plugin_basename(GIFTD_PLUGIN_DIR .'giftd.php');
         }
 
         if ($file == $this_plugin)
@@ -154,7 +154,7 @@ class Giftd
 
     private static function loadTPL($name, $options)
     {
-        $tmpl = ABSPATH . 'wp-content/plugins/giftd/tmpl/' . $name . '.php';
+        $tmpl = ( GIFTD_PLUGIN_DIR .'tmpl/' . $name . '.php');
 
         if(!is_file($tmpl))
             return __('Error Load Template', 'giftd');
@@ -186,7 +186,7 @@ class Giftd
 
             ?>
             <script type="text/javascript">
-                <?php require ABSPATH . 'wp-content/plugins/giftd/assets/js/giftd.js' ?>
+                <?php require ( GIFTD_PLUGIN_DIR .'assets/js/giftd.js' ) ?>
             </script>
             <?php
         }
@@ -454,7 +454,7 @@ class Giftd
             $result = $client->query('partner/getJs');
             $code = isset($result['data']['js']) ? $result['data']['js'] : null;
             if ($code) {
-                $file = ABSPATH . 'wp-content/plugins/giftd/assets/js/giftd.js';
+                $file = ( GIFTD_PLUGIN_DIR .'assets/js/giftd.js');
                 file_put_contents($file, $code);
             }
         } catch (Exception $e) {
