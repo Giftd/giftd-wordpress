@@ -1,4 +1,4 @@
-﻿﻿=== Giftd ===
+﻿=== Giftd ===
 Contributors: Giftd
 Tags: e-commerce, giftd, woocommerce
 Requires at least: 4.3.1
