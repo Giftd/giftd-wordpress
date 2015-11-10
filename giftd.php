@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Giftd
-Description: Giftd - Russia's first B2B-service that combines electronic products for sale gift cards and motivational marketing tools based on them.
+Description: Giftd is the #1 Russian SAAS combining products for digital gift cards sales with advanced marketing instruments.
 Version: 1.0.0
 Author: Giftd
 Author URI: http://giftd.ru
