@@ -3,8 +3,8 @@
 Plugin Name: Giftd
 Description: Giftd - Russia's first B2B-service that combines electronic products for sale gift cards and motivational marketing tools based on them.
 Version: 1.0.0
-Author: Joomline
-Author URI: http://joomline.ru
+Author: Giftd
+Author URI: http://giftd.ru
 */
 
 /*  Copyright 2015  Joomline  (email: sale@joomline.ru)
