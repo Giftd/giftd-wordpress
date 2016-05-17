@@ -16,7 +16,8 @@ You can find out your API credentials here: https://partner.giftd.ru/partner/api
 
 ===================
 ===================
-RUSSIAN INSTRUCTION
+===================
+Russian Instruction
 ===================
 
 =======
