@@ -61,30 +61,3 @@ msgstr "Сохранить изменения"
 #: tmpl/adminform.php:87
 msgid "Go to Giftd account"
 msgstr "Перейти в аккаунт Giftd"
-
-#~ msgid "API Key"
-#~ msgstr "Ключ API Giftd (api_key)"
-
-#~ msgid "Partner code"
-#~ msgstr "Код партнера Giftd"
-
-#~ msgid "Partner token prefix"
-#~ msgstr "Префикс кодов подарочных карт"
-
-#~ msgid "Currency to rouble exchange rate"
-#~ msgstr "Коэффициент пересчета валюты в рубли"
-
-#~ msgid "Submit only product_id (not variation_id)"
-#~ msgstr "Передавать только product_id (исключить variation_id)"
-
-#~ msgid "Yes"
-#~ msgstr "Да"
-
-#~ msgid "No"
-#~ msgstr "Нет"
-
-#~ msgid "Convead Settings"
-#~ msgstr "Нас"
-
-#~ msgid "Currency to rouble excange rate"
-#~ msgstr "Коэффициент пересчета валюты в рубли"

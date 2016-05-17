@@ -7,7 +7,7 @@
 ---------------
 * Go to "Plugins" > "Add new" in the admin area of your shop
 * Enter "Giftd" in the search textfield and press Enter. Press "Install" button on the found plugin.
-* Wait for the sign "Giftd plugin was successfully installed" and click "Active plugin" link below.
+* Wait for the sign "Giftd plugin was successfully installed" and click "Activate plugin" link below.
 * Go to "Plugins" > "Giftd cards" and enter the following data: Giftd User ID (user_id), API key of your Giftd account (api_key), Partner Code and Giftd Cards tokens prefix.
 * Click "Save changes"
 
@@ -18,6 +18,7 @@ You can find out your API credentials here: https://partner.giftd.ru/partner/api
 RUSSIAN INSTRUCTION
 ===================
 
+=======
 1. Требования к CMS
 -------------------
 
@@ -25,7 +26,6 @@ RUSSIAN INSTRUCTION
 * Версия WooCommerce 2.x
 
 2. Установите плагин Giftd в ваш магазин
-------------------------------------------
 
 * В административной панели вашего магазина перейдите в раздел «Плагины» > «Добавить новый».
 * Наберите Giftd в строке поиска плагинов и нажмите Enter. Нажмите кнопку «Установить» на найденном плагине.

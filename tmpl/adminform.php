@@ -1,13 +1,3 @@
-<?php
-/*
-Plugin Name: Giftd
-Description: Giftd - Russia's first B2B-service that combines electronic products for sale gift cards and motivational marketing tools based on them.
-Version: 1.0.0
-Author: Joomline
-Author URI: http://joomline.ru
-*/
-
-?>
 <div class="wrap">
     <div class="icon32" id="icon-options-general"></div>
     <h2><?php echo __("Giftd Settings", 'giftd'); ?></h2>
