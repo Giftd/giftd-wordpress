@@ -11,7 +11,7 @@
 * Go to "Plugins" > "Giftd cards" and enter the following data: Giftd User ID (user_id), API key of your Giftd account (api_key), Partner Code and Giftd Cards tokens prefix.
 * Click "Save changes"
 
-You can find out your API credentials here: https://partner.giftd.ru/partner/apiCredentials
+You can find out your API credentials here: https://partner.giftd.tech/partner/apiCredentials
 
 
 ===================
