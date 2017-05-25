@@ -189,6 +189,16 @@ class Giftd_Client
         return $this->constructGiftCard($result['data'], $token);
     }
 
+    public function orderUpdate($data, $cms='wordpress')
+    {
+        $result = $this->query('cmsModule/orderUpdate', array(
+            'data' => $data,
+            'cms' => $cms
+        ));
+
+        return $result;
+    }
+
     private function calculateSignature($method, array $params)
     {
         $signatureBase = $method . "," . $this->userId. ",";
