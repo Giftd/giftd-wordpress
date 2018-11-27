@@ -468,7 +468,8 @@ class Giftd {
 	}
 
 	public static function changeOrderSubmit( $order_id ) {
-		if ( function_exists( 'wc_get_order' ) ) {
+
+        if ( function_exists( 'wc_get_order' ) ) {
 			$order = wc_get_order( $order_id );
 		} else {
 			$order = new WC_Order( $order_id );
@@ -500,12 +501,107 @@ class Giftd {
 
 		}
 
+
 		if ( empty( $couponCode ) ) {
+			self::uploadAllOrderChanges($order);
 			return;
 		}
 
 		self::submitOrder( $couponCode, $order );
 	}
+
+	private static function uploadAllOrderChanges( $order ) {
+
+		$params = self::get_params();
+		$userId = $params['user_id'];
+		$apiKey = $params['api_key'];
+
+		$orderData   = $order->get_data();
+		$total       = $order->get_total();
+		$shipping    = ( method_exists( $order, 'get_total_shipping' ) ) ? $order->get_total_shipping() : 0;
+		$order_total = round( ( $total - $shipping ), 2 );
+
+		switch ( $orderData['status'] ) {
+			case 'pending':
+				$is_paid      = false;
+				$is_delivered = false;
+				break;
+			case 'processing':
+				$is_paid      = true;
+				$is_delivered = false;
+				break;
+			case 'on-hold':
+				$is_paid      = true;
+				$is_delivered = false;
+				break;
+			case 'completed':
+				$is_paid      = true;
+				$is_delivered = true;
+				break;
+			case 'cancelled':
+				$is_paid      = false;
+				$is_delivered = false;
+				break;
+			case 'refunded':
+				$is_paid      = false;
+				$is_delivered = false;
+				break;
+			case 'failed':
+				$is_paid      = false;
+				$is_delivered = false;
+				break;
+			default:
+				$is_paid      = false;
+				$is_delivered = false;
+				break;
+		}
+
+		$created = is_object( $orderData['date_created'] ) ? $orderData['date_created']->format( 'U' ) : '';
+		$updated = is_object( $orderData['date_modified'] ) ? $orderData['date_modified']->format( 'U' ) : '';
+		$items   = array();
+		if ( is_array( $orderData['line_items'] ) && count( $orderData['line_items'] ) ) {
+			foreach ( $orderData['line_items'] as $line_item ) {
+				$product = $line_item->get_product();
+				$image   = wp_get_attachment_image_src( $product->get_image_id(), 'shop_single' );
+				$image   = ! empty( $image[0] ) ? $image[0] : '';
+				$items[] = array(
+					'id'         => $line_item->get_product_id(),
+					'url'        => esc_url( $product->get_permalink() ),
+					'title'      => $line_item->get_name(),
+					'categories' => array(),
+					'picture'    => $image,
+					'quantity'   => $line_item->get_quantity(),
+					'price'      => $line_item->get_subtotal()
+				);
+			}
+		}
+
+		$data = array(
+			'id'           => (string) $orderData['id'],
+			'amount_total' => $order_total,
+			'is_paid'      => $is_paid,
+			'is_delivered' => $is_delivered,
+			'comment'      => $orderData['customer_note'],
+			'email'        => ! empty( $orderData['billing']['email'] ) ? $orderData['billing']['email'] : '',
+			'phone'        => ! empty( $orderData['billing']['phone'] ) ? $orderData['billing']['phone'] : '',
+			'promo_code'   => '',
+			'created'      => $created,
+			'updated'      => $updated,
+			'items'        => $items,
+			'cookies'      => $_COOKIE,
+			'raw_data'     => $orderData
+		);
+
+		$client = new Giftd_Client( $userId, $apiKey );
+
+		$result = $client->orderUpdate( json_encode($data) );
+
+		if ( isset( $result['type'] ) && $result['type'] == 'data' && $result['data'] == 'ok' ) {
+			return true;
+		}
+
+		return false;
+    }
 
 	private static function submitOrder( $couponCode, $order ) {
 		if ( ! defined( 'GIFTD_ORDER_SUBMITTED' ) ) {
@@ -600,10 +696,10 @@ class Giftd {
 		);
 
 		$client = new Giftd_Client( $userId, $apiKey );
-		$result = $client->orderUpdate( $data );
+		$result = $client->orderUpdate( json_encode($data) );
 
 		if ( isset( $result['type'] ) && $result['type'] == 'data' && $result['data'] == 'ok' ) {
-			return true;
+		    return true;
 		}
 
 		return false;

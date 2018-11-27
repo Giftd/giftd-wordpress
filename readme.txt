@@ -2,8 +2,8 @@
 Contributors: Giftd
 Tags: e-commerce, giftd, woocommerce
 Requires at least: 4.3.1
-Tested up to: 4.3.1
-Stable tag: 1.0.0
+Tested up to: 4.7.5
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,9 @@ Yes, you should register at [Giftd](http://giftd.ru/) first to obtain an API-key
 1. Logo Giftd.
 
 == Changelog ==
+
+= 1.1 =
+* Support woocommerce up 2.7.
 
 = 1.0 =
 * Final release.

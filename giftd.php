@@ -2,12 +2,12 @@
 /*
 Plugin Name: Giftd
 Description: Giftd is the #1 Russian SAAS combining products for digital gift cards sales with advanced marketing instruments.
-Version: 1.0.0
+Version: 1.1.0
 Author: Giftd
 Author URI: http://giftd.ru
 */
 
-/*  Copyright 2015  Joomline  (email: sale@joomline.ru)
+/*  Copyright 2015-2017  Joomline  (email: sale@joomline.ru)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
